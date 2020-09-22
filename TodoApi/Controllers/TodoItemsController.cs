@@ -22,6 +22,15 @@ namespace TodoApi.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves the full list of Todo Items
+        /// </summary>
+        /// <returns>A List of Todo Items</returns>
+        /// <response code="200">Returns all found</response>
+        /// <response code="404">No Todo Items found</response> 
+        [ProducesResponseType(typeof(IEnumerable<TodoItem>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IDictionary<string, string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         // GET: api/TodoItems
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
